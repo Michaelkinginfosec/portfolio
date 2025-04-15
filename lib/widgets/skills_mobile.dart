@@ -8,31 +8,31 @@ class SkillsMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 500),
+      constraints: const BoxConstraints(maxWidth: 500),
       child: Column(
         children: [
           for (int i = 0; i < platformItems.length; i++)
             Container(
-              margin: EdgeInsets.only(bottom: 5),
+              margin: const EdgeInsets.only(bottom: 5),
               width: double.maxFinite,
               decoration: BoxDecoration(
                 color: CustomColor.bgLight2,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: ListTile(
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 10,
                 ),
                 leading: Image.asset(
-                  platformItems[i]['img'],
+                  platformItems[i]['img'].toString(),
                   width: 26,
                   color: CustomColor.whitePrimary,
                 ),
-                title: Text(platformItems[i]['title']),
+                title: Text(platformItems[i]['title'].toString()),
               ),
             ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Wrap(
             spacing: 10,
             runSpacing: 10,
@@ -41,9 +41,12 @@ class SkillsMobile extends StatelessWidget {
               for (int i = 0; i < skillsItem.length; i++)
                 Chip(
                   backgroundColor: CustomColor.bgLight2,
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  label: Text(skillsItem[i]['title']),
-                  avatar: Image.asset(skillsItem[i]['img']),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                    horizontal: 16,
+                  ),
+                  label: Text(skillsItem[i]['title'].toString()),
+                  avatar: Image.asset(skillsItem[i]['img'].toString()),
                 ),
             ],
           ),

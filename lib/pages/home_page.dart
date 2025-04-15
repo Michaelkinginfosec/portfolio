@@ -1,9 +1,8 @@
 import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/size.dart';
-
 import 'package:portfolio/widgets/contact_session.dart';
 import 'package:portfolio/widgets/drawer_mobile.dart';
 import 'package:portfolio/widgets/footer.dart';
@@ -11,7 +10,6 @@ import 'package:portfolio/widgets/header_desktop.dart';
 import 'package:portfolio/widgets/header_mobile.dart';
 import 'package:portfolio/widgets/main_desktop.dart';
 import 'package:portfolio/widgets/main_mobile.dart';
-
 import 'package:portfolio/widgets/projects_section.dart';
 import 'package:portfolio/widgets/skills_desktop.dart';
 import 'package:portfolio/widgets/skills_mobile.dart';
@@ -51,7 +49,6 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
           body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
             controller: scrollController,
             child: Column(
               children: [
@@ -73,45 +70,45 @@ class _HomePageState extends State<HomePage> {
                   ),
 
                 if (constraints.maxWidth >= kMinDesktopWidth)
-                  MainDesktop()
+                  const MainDesktop()
                 else
-                  MainMobile(),
+                  const MainMobile(),
 
                 //skils
                 Container(
                   key: navKeys[1],
-                  padding: EdgeInsets.fromLTRB(25, 20, 25, 60),
+                  padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
 
                   width: screenWidth,
                   color: CustomColor.bgLight1,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        "What I can do",
+                      const Text(
+                        'What I can do',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: CustomColor.whitePrimary,
                         ),
                       ),
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                       if (constraints.maxWidth >= kMedDesktopWidth)
-                        SkillsDesktop()
+                        const SkillsDesktop()
                       else
                         const SkillsMobile(),
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 //projects
                 ProjectsSection(key: navKeys[2]),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 //contact
                 ContactSession(key: navKeys[3]),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
 
-                Footer(),
+                const Footer(),
               ],
             ),
           ),
@@ -124,8 +121,7 @@ class _HomePageState extends State<HomePage> {
     if (navIndex == 0) {
       _reload();
     } else if (navIndex == 4) {
-      //open blog page
-      return;
+      context.go('/login');
     }
 
     final key = navKeys[navIndex];

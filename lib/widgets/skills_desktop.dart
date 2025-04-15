@@ -12,7 +12,7 @@ class SkillsDesktop extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 450),
+          constraints: const BoxConstraints(maxWidth: 450),
           child: Wrap(
             spacing: 5,
             runSpacing: 5,
@@ -25,25 +25,25 @@ class SkillsDesktop extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: ListTile(
-                    contentPadding: EdgeInsets.symmetric(
+                    contentPadding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 10,
                     ),
                     leading: Image.asset(
-                      platformItems[i]["img"],
+                      platformItems[i]['img'].toString(),
                       width: 25,
                       color: CustomColor.whitePrimary,
                     ),
-                    title: Text(platformItems[i]["title"]),
+                    title: Text(platformItems[i]['title'].toString()),
                   ),
                 ),
             ],
           ),
         ),
-        SizedBox(width: 50),
+        const SizedBox(width: 50),
         Flexible(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 500),
+            constraints: const BoxConstraints(maxWidth: 500),
             child: Wrap(
               spacing: 10,
               runSpacing: 10,
@@ -51,9 +51,12 @@ class SkillsDesktop extends StatelessWidget {
                 for (int i = 0; i < skillsItem.length; i++)
                   Chip(
                     backgroundColor: CustomColor.bgLight2,
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    label: Text(skillsItem[i]['title']),
-                    avatar: Image.asset(skillsItem[i]['img']),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 16,
+                    ),
+                    label: Text(skillsItem[i]['title'].toString()),
+                    avatar: Image.asset(skillsItem[i]['img'].toString()),
                   ),
               ],
             ),

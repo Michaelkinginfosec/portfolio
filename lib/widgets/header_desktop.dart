@@ -17,7 +17,7 @@ class HeaderDesktop extends StatelessWidget {
       child: Row(
         children: [
           PortfolioLogo(onTap: () {}),
-          Spacer(),
+          const Spacer(),
           for (int i = 0; i < navTiles.length; i++)
             Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -27,7 +27,7 @@ class HeaderDesktop extends StatelessWidget {
                 },
                 child: Text(
                   navTiles[i],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: CustomColor.whitePrimary,

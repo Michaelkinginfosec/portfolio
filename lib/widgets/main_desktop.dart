@@ -10,9 +10,9 @@ class MainDesktop extends StatelessWidget {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       height: screenHeight / 1.2,
-      constraints: BoxConstraints(minHeight: 350),
+      constraints: const BoxConstraints(minHeight: 350),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -21,7 +21,7 @@ class MainDesktop extends StatelessWidget {
             children: [
               SizedBox(
                 width: screenWidth / 2.5,
-                child: Text(
+                child: const Text(
                   "Hi,\nI'm Osunde Goodluck Michael\nA Flutter and NestJs Developer",
                   style: TextStyle(
                     fontSize: 30,
@@ -31,7 +31,7 @@ class MainDesktop extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                 width: screenWidth / 2.5,
                 alignment: Alignment.centerLeft,
@@ -43,8 +43,8 @@ class MainDesktop extends StatelessWidget {
                       backgroundColor: CustomColor.yellowPrimary,
                     ),
                     onPressed: () {},
-                    child: Text(
-                      "Get in touch",
+                    child: const Text(
+                      'Get in touch',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class MainDesktop extends StatelessWidget {
               ),
             ],
           ),
-          Image.asset("assets/images/flutter.png", width: screenWidth / 2),
+          Image.asset('assets/images/flutter.png', width: screenWidth / 2),
         ],
       ),
     );

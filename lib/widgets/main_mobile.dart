@@ -15,11 +15,10 @@ class _MainMobileState extends State<MainMobile> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
       height: screenHeight / 1.5,
-      constraints: BoxConstraints(minHeight: 350),
+      constraints: const BoxConstraints(minHeight: 350),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ShaderMask(
@@ -33,10 +32,10 @@ class _MainMobileState extends State<MainMobile> {
               ).createShader(bounds);
             },
             blendMode: BlendMode.srcATop,
-            child: Image.asset("assets/images/flutter.png", width: screenWidth),
+            child: Image.asset('assets/images/flutter.png', width: screenWidth),
           ),
-          SizedBox(height: 30),
-          Text(
+          const SizedBox(height: 30),
+          const Text(
             "Hi,\nI'm Osunde Goodluck Michael\nA Flutter and NestJs Developer",
             style: TextStyle(
               fontSize: 24,
@@ -45,7 +44,7 @@ class _MainMobileState extends State<MainMobile> {
               height: 1.5,
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           SizedBox(
             width: 190,
             height: 50,
@@ -54,8 +53,8 @@ class _MainMobileState extends State<MainMobile> {
                 backgroundColor: CustomColor.yellowPrimary,
               ),
               onPressed: () {},
-              child: Text(
-                "Get in touch",
+              child: const Text(
+                'Get in touch',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

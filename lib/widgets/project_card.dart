@@ -3,7 +3,7 @@ import 'dart:js_interop';
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/models/project_models.dart';
+import 'package:portfolio/datasource/models/project_models.dart';
 
 @JS('window.open')
 external JSAny? openWindow(JSString url, JSString target);
@@ -41,7 +41,7 @@ class ProjectCard extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(12, 15, 12, 12),
             child: Text(
               projectModel.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: CustomColor.whitePrimary,
               ),
@@ -51,23 +51,26 @@ class ProjectCard extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
             child: Text(
               projectModel.subtitle,
-              style: TextStyle(fontSize: 12, color: CustomColor.whiteSecondary),
+              style: const TextStyle(
+                fontSize: 12,
+                color: CustomColor.whiteSecondary,
+              ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
             color: CustomColor.bgLight1,
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Row(
               children: [
-                Text(
-                  "Available on:",
+                const Text(
+                  'Available on:',
                   style: TextStyle(
                     color: CustomColor.yellowSecondary,
                     fontSize: 10,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 if (projectModel.androidLink != null)
                   InkWell(
                     onTap: () {
@@ -116,7 +119,7 @@ class ProjectCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: Image.asset(
-                        "assets/images/world-globe-line-icon.png",
+                        'assets/images/world-globe-line-icon.png',
                         width: 17,
                         color: CustomColor.whitePrimary,
                       ),

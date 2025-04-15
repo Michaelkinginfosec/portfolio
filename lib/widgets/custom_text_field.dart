@@ -18,17 +18,17 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxLine,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(16),
         filled: true,
         fillColor: CustomColor.whiteSecondary,
         focusedBorder: getInputBoarder,
         enabledBorder: getInputBoarder,
         border: getInputBoarder,
         hintText: hintText,
-        hintStyle: TextStyle(color: CustomColor.hintDark),
+        hintStyle: const TextStyle(color: CustomColor.hintDark),
       ),
 
-      style: TextStyle(color: CustomColor.scaffoldBg),
+      style: const TextStyle(color: CustomColor.scaffoldBg),
     );
   }
 

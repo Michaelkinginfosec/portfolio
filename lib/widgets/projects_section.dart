@@ -11,23 +11,23 @@ class ProjectsSection extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth,
-      padding: EdgeInsets.fromLTRB(25, 20, 25, 60),
+      padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
       child: Column(
         children: [
           //work project
-          Text(
-            "Work Project",
+          const Text(
+            'Work Project',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: CustomColor.whitePrimary,
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
 
           ///work project cards
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 900),
+            constraints: const BoxConstraints(maxWidth: 900),
             child: Wrap(
               spacing: 25,
               runSpacing: 25,
@@ -39,20 +39,20 @@ class ProjectsSection extends StatelessWidget {
           ),
 
           //hobby project
-          SizedBox(height: 80),
-          Text(
-            "Hobby Project",
+          const SizedBox(height: 80),
+          const Text(
+            'Hobby Project',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: CustomColor.whitePrimary,
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
 
           ///honny project cards
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 900),
+            constraints: const BoxConstraints(maxWidth: 900),
             child: Wrap(
               spacing: 25,
               runSpacing: 25,

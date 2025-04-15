@@ -7,12 +7,12 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
 
       width: double.maxFinite,
       alignment: Alignment.center,
-      child: Text(
-        "Made with Flutter + NestJS — Michaelking",
+      child: const Text(
+        'Made with Flutter + NestJS — Michaelking',
         style: TextStyle(
           fontWeight: FontWeight.w400,
           color: CustomColor.whiteSecondary,

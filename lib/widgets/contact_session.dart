@@ -19,22 +19,22 @@ class ContactSession extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(25, 20, 25, 60),
+      padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
 
       color: CustomColor.bgLight1,
       child: Column(
         children: [
-          Text(
-            "Get in touch",
+          const Text(
+            'Get in touch',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 24,
               color: CustomColor.whitePrimary,
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 700, maxHeight: 100),
+            constraints: const BoxConstraints(maxWidth: 700, maxHeight: 100),
 
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -45,15 +45,15 @@ class ContactSession extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 700),
-            child: CustomTextField(hintText: "Your message", maxLine: 16),
+            constraints: const BoxConstraints(maxWidth: 700),
+            child: const CustomTextField(hintText: 'Your message', maxLine: 16),
           ),
           //send button
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 700),
+            constraints: const BoxConstraints(maxWidth: 700),
             child: SizedBox(
               height: 40,
               width: double.maxFinite,
@@ -63,8 +63,8 @@ class ContactSession extends StatelessWidget {
                   backgroundColor: CustomColor.yellowPrimary,
                 ),
                 onPressed: () {},
-                child: Text(
-                  "Get in touch",
+                child: const Text(
+                  'Get in touch',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -74,12 +74,12 @@ class ContactSession extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 300),
-            child: Divider(),
+            constraints: const BoxConstraints(maxWidth: 300),
+            child: const Divider(),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Wrap(
             spacing: 12,
             runSpacing: 12,
@@ -89,23 +89,23 @@ class ContactSession extends StatelessWidget {
                 onTap: () {
                   openLink(SocialLinkes.github);
                 },
-                child: Image.asset("assets/images/github.png", width: 28),
+                child: Image.asset('assets/images/github.png', width: 28),
               ),
               InkWell(
                 onTap: () {
                   openLink(SocialLinkes.linkedIn);
                 },
-                child: Image.asset("assets/images/linkedin.png", width: 28),
+                child: Image.asset('assets/images/linkedin.png', width: 28),
               ),
               InkWell(
                 onTap: () {
                   openLink(SocialLinkes.facebook);
                 },
-                child: Image.asset("assets/images/facebook.png", width: 28),
+                child: Image.asset('assets/images/facebook.png', width: 28),
               ),
               InkWell(
                 onTap: () {},
-                child: Image.asset("assets/images/instagram.png", width: 28),
+                child: Image.asset('assets/images/instagram.png', width: 28),
               ),
             ],
           ),
@@ -115,21 +115,21 @@ class ContactSession extends StatelessWidget {
   }
 
   Row buildNameAndEmailDesktop() {
-    return Row(
+    return const Row(
       children: [
-        Flexible(child: CustomTextField(hintText: "Your name")),
+        Flexible(child: CustomTextField(hintText: 'Your name')),
         SizedBox(width: 15),
-        Flexible(child: CustomTextField(hintText: "Your email")),
+        Flexible(child: CustomTextField(hintText: 'Your email')),
       ],
     );
   }
 
   Column buildNameAndEmailMobile() {
-    return Column(
+    return const Column(
       children: [
-        Flexible(child: CustomTextField(hintText: "Your name")),
+        Flexible(child: CustomTextField(hintText: 'Your name')),
         SizedBox(height: 15),
-        Flexible(child: CustomTextField(hintText: "Your email")),
+        Flexible(child: CustomTextField(hintText: 'Your email')),
       ],
     );
   }
