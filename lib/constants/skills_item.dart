@@ -10,6 +10,7 @@ const List<Map> platformItems = [
 const List<Map> skillsItem = [
   {'img': 'assets/images/flutter-icon.png', 'title': 'Flutter'},
   {'img': 'assets/images/dart-programming-language-icon.png', 'title': 'Dart'},
+  {'img': 'assets/images/nest.png', 'title': 'NestJS'},
   {'img': 'assets/images/node-js-icon.png', 'title': 'Node'},
   {
     'img': 'assets/images/typescript-programming-language-icon.png',
@@ -18,4 +19,11 @@ const List<Map> skillsItem = [
   {'img': 'assets/images/google-firebase-icon.png', 'title': 'Firebase'},
   {'img': 'assets/images/postgresql-icon.png', 'title': 'Postgres'},
   {'img': 'assets/images/mongodb-icon.png', 'title': 'MongoDB'},
+  {'img': 'assets/images/cloudinary.png', 'title': 'Cloudinary'},
+  {'img': 'assets/images/action.png', 'title': 'Github Action'},
+  {'img': 'assets/images/bloc.png', 'title': 'Bloc'},
+  {'img': 'assets/images/riverpod.png', 'title': 'Riverpod'},
+  {'img': 'assets/images/figma.png', 'title': 'Figma'},
+  {'img': 'assets/images/git.png', 'title': 'Git'},
+  {'img': 'assets/images/github1.png', 'title': 'Github'},
 ];

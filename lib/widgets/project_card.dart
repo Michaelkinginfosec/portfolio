@@ -1,5 +1,6 @@
 import 'dart:js_interop';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/constants/colors.dart';
@@ -21,7 +22,7 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      height: 290,
+      height: 310,
       width: 260,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -29,14 +30,14 @@ class ProjectCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            projectModel.image,
+          CachedNetworkImage(
+            imageUrl: projectModel.image,
             width: 260,
             height: 140,
             fit: BoxFit.cover,
           ),
+
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 15, 12, 12),
             child: Text(
@@ -50,7 +51,7 @@ class ProjectCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
             child: Text(
-              projectModel.subtitle,
+              projectModel.subTitle,
               style: const TextStyle(
                 fontSize: 12,
                 color: CustomColor.whiteSecondary,
@@ -73,24 +74,20 @@ class ProjectCard extends StatelessWidget {
                 const Spacer(),
                 if (projectModel.androidLink != null)
                   InkWell(
-                    onTap: () {
-                      openLink(projectModel.androidLink!);
-                    },
+                    onTap: () => openLink(projectModel.androidLink!),
                     child: Image.asset(
-                      projectModel.androidLink!,
+                      'assets/images/android-robot-bot-icon.png',
                       width: 17,
                       color: CustomColor.whitePrimary,
                     ),
                   ),
                 if (projectModel.iosLink != null)
                   InkWell(
-                    onTap: () {
-                      openLink(projectModel.iosLink!);
-                    },
+                    onTap: () => openLink(projectModel.iosLink!),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: Image.asset(
-                        projectModel.iosLink!,
+                        'assets/images/apple-icon.png',
                         width: 19,
                         color: CustomColor.whitePrimary,
                       ),
@@ -98,28 +95,23 @@ class ProjectCard extends StatelessWidget {
                   ),
                 if (projectModel.webLink != null)
                   InkWell(
-                    onTap: () {
-                      openLink(projectModel.webLink!);
-                    },
+                    onTap: () => openLink(projectModel.webLink!),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: Image.asset(
-                        projectModel.webLink!,
+                        'assets/images/world-globe-line-icon.png',
                         width: 17,
                         color: CustomColor.whitePrimary,
                       ),
                     ),
                   ),
-
                 if (projectModel.githubLink != null)
                   InkWell(
-                    onTap: () {
-                      openLink(projectModel.githubLink!);
-                    },
+                    onTap: () => openLink(projectModel.githubLink!),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: Image.asset(
-                        'assets/images/world-globe-line-icon.png',
+                        'assets/images/github.png',
                         width: 17,
                         color: CustomColor.whitePrimary,
                       ),

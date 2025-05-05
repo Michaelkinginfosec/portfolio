@@ -1,6 +1,10 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/project/project_bloc.dart';
+import 'package:portfolio/bloc/project/project_event.dart';
 import 'package:portfolio/constants/colors.dart';
+import 'package:portfolio/datasource/models/project_models.dart';
 import 'package:portfolio/widgets/custom_text_field.dart';
 
 class ProjectDialog extends StatefulWidget {
@@ -12,14 +16,17 @@ class ProjectDialog extends StatefulWidget {
 
 class _ProjectDialogState extends State<ProjectDialog> {
   final TextEditingController titleController = TextEditingController();
-  final TextEditingController subtitleController = TextEditingController();
+  final TextEditingController subTitleController = TextEditingController();
   final Map<String, TextEditingController> linkControllers = {
     'GitHub': TextEditingController(),
     'Website': TextEditingController(),
     'App Store': TextEditingController(),
     'Play Store': TextEditingController(),
   };
+
+  String selectedType = 'hobby';
   PlatformFile? pickedImage;
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -32,28 +39,45 @@ class _ProjectDialogState extends State<ProjectDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 40, child: CustomTextField(hintText: 'Title')),
-            SizedBox(height: 5),
-            CustomTextField(hintText: 'Subtitle', maxLine: 5),
-
+            DropdownButtonFormField<String>(
+              value: selectedType,
+              dropdownColor: CustomColor.bgLight1,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white10,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              items:
+                  ['hobby', 'work']
+                      .map(
+                        (type) =>
+                            DropdownMenuItem(value: type, child: Text(type)),
+                      )
+                      .toList(),
+              onChanged: (val) {
+                if (val != null) setState(() => selectedType = val);
+              },
+            ),
             const SizedBox(height: 10),
-
+            CustomTextField(controller: titleController, hintText: 'Title'),
+            const SizedBox(height: 5),
+            CustomTextField(
+              controller: subTitleController,
+              hintText: 'Subtitle',
+              maxLine: 5,
+            ),
+            const SizedBox(height: 10),
             InkWell(
               onTap: () async {
-                try {
-                  final result = await FilePicker.platform.pickFiles(
-                    type: FileType.image,
-                    allowMultiple: false,
-                    withData: true, // important for web!
-                  );
-                  if (result != null && result.files.isNotEmpty) {
-                    setState(() => pickedImage = result.files.first);
-                    print("Picked: ${pickedImage!.name}");
-                  } else {
-                    print("User canceled the picker.");
-                  }
-                } catch (e) {
-                  print("FilePicker error: $e");
+                final result = await FilePicker.platform.pickFiles(
+                  type: FileType.image,
+                  allowMultiple: false,
+                  withData: true,
+                );
+                if (result != null && result.files.isNotEmpty) {
+                  setState(() => pickedImage = result.files.first);
                 }
               },
               child: Container(
@@ -68,9 +92,11 @@ class _ProjectDialogState extends State<ProjectDialog> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.image),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
-                      'Pick Project Image',
+                      pickedImage != null
+                          ? 'Image Selected'
+                          : 'Pick Project Image',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -91,7 +117,7 @@ class _ProjectDialogState extends State<ProjectDialog> {
                             controller: entry.value,
                             hintText: "${entry.key} link (Optional)",
                           ),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 10),
                         ],
                       )
                       .toList(),
@@ -102,18 +128,39 @@ class _ProjectDialogState extends State<ProjectDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-
           child: const Text(
             'Cancel',
-            style: TextStyle(
-              color: CustomColor.yellowSecondary,
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(color: CustomColor.yellowSecondary),
           ),
         ),
         ElevatedButton(
           onPressed: () {
+            final title = titleController.text.trim();
+            final subTitle = subTitleController.text.trim();
+
+            if (title.isEmpty || subTitle.isEmpty || pickedImage == null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Please fill all required fields"),
+                ),
+              );
+              return;
+            }
+
+            final model = ProjectModel(
+              image: '',
+              imageFile: pickedImage,
+              title: title,
+              subTitle: subTitle,
+              githubLink: linkControllers['GitHub']?.text,
+              webLink: linkControllers['Website']?.text,
+              iosLink: linkControllers['App Store']?.text,
+              androidLink: linkControllers['Play Store']?.text,
+            );
+
+            context.read<ProjectBloc>().add(
+              AddProjectEvent(model, selectedType),
+            );
             Navigator.pop(context);
           },
           style: ElevatedButton.styleFrom(
@@ -121,11 +168,7 @@ class _ProjectDialogState extends State<ProjectDialog> {
           ),
           child: const Text(
             'Add',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: CustomColor.whitePrimary,
-            ),
+            style: TextStyle(color: CustomColor.whitePrimary),
           ),
         ),
       ],

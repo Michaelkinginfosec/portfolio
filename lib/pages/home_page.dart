@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
   void scrollToSession(int navIndex) {
     if (navIndex == 0) {
       _reload();
-    } else if (navIndex == 4) {
+    } else if (navIndex == 3) {
       context.go('/login');
     }
 
