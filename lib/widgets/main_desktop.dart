@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/colors.dart';
+import 'package:portfolio/utils/web_utils.dart';
 
 class MainDesktop extends StatelessWidget {
   const MainDesktop({super.key});
@@ -42,9 +43,14 @@ class MainDesktop extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: CustomColor.yellowPrimary,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      downloadFile(
+                        'assets/images/resume.pdf',
+                        'Osunde_Goodluck_Michael_Resume.pdf',
+                      );
+                    },
                     child: const Text(
-                      'Get in touch',
+                      'Download Resume',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
